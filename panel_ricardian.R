@@ -30,16 +30,3 @@ system.time(
 
 
 
-
-#----------------PRACTICE---------------------------------#
-practice <- read_parquet(sam_parq) %>%
-  select(ls_price, ls_date, ha)
-
-cleaned <- practice %>%
-  filter(ls_date != "") %>%
-  mutate(year = as.numeric(str_sub(ymd(ls_date),1,4))) %>%
-  filter(year <= 2020)# %>%
-  #str_split_fixed(practice$ls_date[which(str_detect(practice$ls_date,"~~")==TRUE)],"~~",n = 2)
-
-
-
