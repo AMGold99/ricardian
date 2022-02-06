@@ -1,16 +1,20 @@
+####-------------------SCRATCHWORK, NOT RUN--------------####
+
+# install.packages(c('arrow','dplyr','stringr'))
 library(arrow)
 library(dplyr)
 library(stringr)
 
-#set parent and child directories
-main_dir <- 'Land_Use_Rights'
 
-sub_dir <- 'ricardian'
+####-----------NOT FINAL, PATHS WILL CHANGE ONCE DATA IS AVAILABLE-----------####
 
-#set file path
+# --NOT VALID-- set file path to data
 sample <- file.path(getwd(),main_dir,sub_dir,"25017_pc.pqt")
 
+# --NOT VALID-- specify all variables to be included in the model
 variables = c('ls_price','slope','travel','elev','p_water')
+
+####-------------------------------------------------------------------####
 
 
 
