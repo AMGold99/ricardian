@@ -3,7 +3,7 @@ All code for Ricardian Land Value estimation paper. Authors: Gold, Binder, and N
 
 *Note: This README is an ongoing documentation of our work and should not be taken as final. I've tried to include caveats where I expect something to change significantly as we finalize data and analysis strategies.*
 
-## Panel Model
+## OLS Model
 
 My general strategy here is to load, clean, and model the data all in one pipeline, using magrittr's pipe (%>%), which allows you to make fewer copies of your data as you go along. 
 
