@@ -1,7 +1,7 @@
 # Ricardian Land Value
 All code for Ricardian Land Value estimation paper. Authors: Gold, Binder, and Nolte.
 
-Note: This README is an ongoing documentation of our work and should not be taken as final. I've tried to include caveats where I expect something to change significantly as we finalize data and analysis strategies. 
+\textit{Note: This README is an ongoing documentation of our work and should not be taken as final. I've tried to include caveats where I expect something to change significantly as we finalize data and analysis strategies.} 
 
 ## Panel Model
 
@@ -32,7 +32,7 @@ Here's a brief run-down:
 
 ## Random Forest Model (Basic -- Ignore)
 
-randomForest.R 
+randomForest.R contains a ton of code for a basic random forest implementation with the base [randomForest package](https://cran.r-project.org/web/packages/randomForest/index.html). Unfortunately, randomForest scales poorly, quickly getting bogged down with larger datasets and more intensive forest modeling (e.g., greater numbers of features tried at each split, commonly denoted as "mtry").
 
 ## Random Forest Model (Upgraded with Ranger)
 
