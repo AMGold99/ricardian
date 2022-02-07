@@ -14,7 +14,7 @@ Next, we specify the names of all the variables we want to include in our model,
 The general setup is as follows:
 
 ```r
-panel_model <- arrow::read_parquet(sample) %>%
+ols_model <- arrow::read_parquet(sample) %>%
     dplyr::select(all_of(model_variables)) %>%
     stats::lm(ls_price ~ ., .) %>%
     summary(.) %>%

@@ -19,7 +19,7 @@ model_variables = c('ls_price','slope','travel','elev','p_water')
 
 
 system.time(
-  panel_model <- arrow::read_parquet(sample) %>%
+  ols_model <- arrow::read_parquet(sample) %>%
     dplyr::select(all_of(model_variables)) %>%
     stats::lm(ls_price ~ ., .) %>%
     summary(.) %>%
