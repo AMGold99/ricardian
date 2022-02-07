@@ -29,10 +29,15 @@ Here's a brief run-down:
 2. We then select only the variables we specified earlier as **y** and **X**;
 3. We run a basic regression of **X** on **y**. This can be replaced with a panel model specification from the [plm package](https://cran.r-project.org/web/packages/plm/index.html).
 4. After calling a summary of the model, we extract the coefficients and standard errors, then coerce them into a dataframe object. This final dataframe of coefs is what gets saved as **panel_model**.
+5. To present these coefs in a paper, I suggest using the **xtable** function from the [xtable package](https://www.rdocumentation.org/packages/xtable/versions/1.8-4/topics/xtable). [Stargazer](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf) is another popular R package for presenting results and summary statistics tables in HTML or LaTeX. This function takes as input a regression object (right after step 3 above). 
+
+Note: the periods in the code above are used in pipe-based workflows to specify the object created up to that point in the pipe.
 
 ## Random Forest Model (Basic -- Ignore)
 
 randomForest.R contains a ton of code for a basic random forest implementation with the base [randomForest package](https://cran.r-project.org/web/packages/randomForest/index.html). Unfortunately, randomForest scales poorly, quickly getting bogged down with larger datasets and more intensive forest modeling (e.g., greater numbers of features tried at each split, commonly denoted as "mtry").
+
+To fix this problem, I've moved to the [ranger package](https://arxiv.org/pdf/1508.04409.pdf), which vastly improves performance for big data use compared to randomForest or other older packages like Rborist.
 
 ## Random Forest Model (Upgraded with Ranger)
 
