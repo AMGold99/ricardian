@@ -28,7 +28,7 @@ Here's a brief run-down:
 1. Using the arrow package, we load the data (in parquet format);
 2. We then select only the variables we specified earlier as **y** and **X**;
 3. We run a basic regression of **X** on **y**. This can be replaced with a panel model specification from the [plm package](https://cran.r-project.org/web/packages/plm/index.html).
-4. After calling a summary of the model, we extract the coefficients and standard errors, then coerce them into a dataframe object. This final dataframe of coefs is what gets saved as **panel_model**.
+4. After calling a summary of the model, we extract the coefficients and standard errors, then coerce them into a dataframe object. This final dataframe of coefs is what gets saved as **ols_model**.
 5. To present these coefs in a paper, I suggest using the **xtable** function from the [xtable package](https://www.rdocumentation.org/packages/xtable/versions/1.8-4/topics/xtable). [Stargazer](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf) is another popular R package for presenting results and summary statistics tables in HTML or LaTeX. This function takes as input a regression object (right after step 3 above). 
 
 Note: the periods in the code above are used in pipe-based workflows to specify the object created up to that point in the pipe.
