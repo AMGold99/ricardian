@@ -1,9 +1,9 @@
 ####-------------------SCRATCHWORK, NOT RUN--------------####
 
-# install.packages(c('arrow','dplyr','stringr'))
+# install.packages(c('arrow','dplyr','stats'))
 library(arrow)
 library(dplyr)
-library(stringr)
+library(stats)
 
 
 ####-----------NOT FINAL, PATHS WILL CHANGE ONCE DATA IS AVAILABLE-----------####
@@ -12,21 +12,22 @@ library(stringr)
 sample <- file.path(getwd(),main_dir,sub_dir,"25017_pc.pqt")
 
 # --NOT VALID-- specify all variables to be included in the model
-variables = c('ls_price','slope','travel','elev','p_water')
+model_variables = c('ls_price','slope','travel','elev','p_water')
 
 ####-------------------------------------------------------------------####
 
 
 
 system.time(
-  panel_model <- read_parquet(sample) %>%
-    select(all_of(variables)) %>%
-    lm(ls_price ~ ., .) %>%
+  panel_model <- arrow::read_parquet(sample) %>%
+    dplyr::select(all_of(model_variables)) %>%
+    stats::lm(ls_price ~ ., .) %>%
     summary(.) %>%
-    coef(.) %>%
+    stats::coef(.) %>%
     as.data.frame(.)
 )
 
+panel_model
 
 
 
