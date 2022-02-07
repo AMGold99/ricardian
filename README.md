@@ -1,7 +1,7 @@
 # Ricardian Land Value
 All code for Ricardian Land Value estimation paper. Authors: Gold, Binder, and Nolte.
 
-\textit{Note: This README is an ongoing documentation of our work and should not be taken as final. I've tried to include caveats where I expect something to change significantly as we finalize data and analysis strategies.} 
+*Note: This README is an ongoing documentation of our work and should not be taken as final. I've tried to include caveats where I expect something to change significantly as we finalize data and analysis strategies.*
 
 ## Panel Model
 
