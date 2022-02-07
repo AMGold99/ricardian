@@ -20,10 +20,11 @@ library(dplyr)
 library(tidyverse)
 library(stats)
 library(missRanger) 
+library(magrittr)
 
 
 # specify data file location NOT VALID
-sample <- file.path(getwd(),"Land_Use_Rights","ricardian","25017_pc.pqt")
+sample <- file.path("../25017_pc.pqt")
 
 # load property data (1.326 sec)
 system.time(
@@ -34,15 +35,17 @@ system.time(
 
 #### Cleaning ####
 
-# remove character features 
+# two different ways to remove character features ONLY 
+
 places_numeric <- places_df[, sapply(places_df, class) != "character"]
 
-
+places_numeric <- places_df %>%
+  dplyr::select_if(is.numeric)
 
 # impute missing values NOT VALID
 system.time(
   
-  places_full <- missRanger::missRanger(places_numeric[1:10000, 1:100],
+  places_full <- missRanger::missRanger(places_numeric[1:1000, 1:100],
                                         pmm.k = 1,
                                         num.trees = 50, 
                                         sample.fraction = 0.1,
@@ -157,24 +160,24 @@ data.frame('values' = optimal_ranger$variable.importance,
   
   ggplot2::ggplot(aes(stats::reorder(names,values),values))+
   
-  geom_point(shape = 21, size = 2.5, fill = "white", colour = "black", stroke = 0.5)+
+  ggplot2::geom_point(shape = 21, size = 2.5, fill = "white", colour = "black", stroke = 0.5)+
   
-  coord_flip()+
+  ggplot2::coord_flip()+
   
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05)))+
+  ggplot2::scale_y_continuous(expand = expansion(mult = c(0, 0.05)))+
   
-  ggtitle(paste0("Highest Importance Variables (Top ",n,")"))+
+  ggplot2::ggtitle(paste0("NOT VALID Highest Importance Features (Top ",n,")"))+
   
-  ylab("Mean Gini Impurity Decrease")+
-  xlab("")+
+  ggplot2::ylab("Mean Gini Impurity Decrease")+
+  ggplot2::xlab("")+
   
-  theme_bw()
+  ggplot2::theme_bw()
 
+ggplot2::ggsave('var_imp_plot.png', width = 7.5, height = 5, units = "in")
 
 
 #### Model Testing (NOT VALID) ####
 
 predictions <- stats::predict(optimal_ranger, data = places_test)
-summary(predictions$predictions - places_test$ls_price)
 
 
