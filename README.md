@@ -49,8 +49,11 @@ To fix this problem, I've moved to the [ranger package](https://arxiv.org/pdf/15
 4. Run preliminary ranger random forest model;
 5. Construct hypergrid of parameter options and run grid search;
 6. Run ranger random forest model using optimal parameters found in grid search;
-7. Build variable importance plot
+7. Build variable importance plot (Fig. 1)
 8. Test model (**is this necessary?**)
+
+![Fig. 1: Example Variable Importance Plot](var_imp_plot.png)
+
 
 
 
