@@ -9,22 +9,20 @@
 
 #### Preamble ####
 
-#load packages
+# load packages
 
-#library(caret) # an aggregator package for performing many machine learning models
-  
 library(arrow)
-library(h2o) # parallel computing for faster hyperparameter tuning
+library(h2o) # parallel computing for faster hyperparameter tuning (NOT YET IMPLEMENTED)
 library(rsample)
 library(ranger)
 library(prob)
 library(dplyr)
 library(tidyverse)
 library(stats)
-library(missRanger)
+library(missRanger) 
 
 
-# specify data file location
+# specify data file location NOT VALID
 sample <- file.path(getwd(),"Land_Use_Rights","ricardian","25017_pc.pqt")
 
 # load property data (1.326 sec)
@@ -41,6 +39,7 @@ places_numeric <- places_df[, sapply(places_df, class) != "character"]
 
 
 
+# impute missing values NOT VALID
 system.time(
   
   places_full <- missRanger::missRanger(places_numeric[1:10000, 1:100],
@@ -53,6 +52,8 @@ system.time(
                                         )
 )
 
+
+# specify vector X of explanatory variables
 input_features <- prob::setdiff(names(places_full),"ls_price")
 
 
@@ -98,6 +99,7 @@ hyper_grid <- expand.grid(
   OOB_RMSE = 0 #empty now, will be filled later
 )
 
+
 # perform grid search to compare parameters' performance
 
 for(i in 1:nrow(hyper_grid)) {
@@ -123,7 +125,7 @@ hyper_grid <- hyper_grid %>%
   arrange(OOB_RMSE)
 
 # rerun random forest in ranger using optimal parameters found via grid search
-optimal_ranger <- ranger(
+optimal_ranger <- ranger::ranger(
   formula = ls_price~.,
   data = places_train,
   num.trees = 500,
@@ -141,7 +143,7 @@ print(optimal_ranger) # we can see that OOB is smaller and R^2 is greater
 
 #### Variable Importance Plot ####
 
-# top n most important variables
+# how many variables to plot?
 n = 11
 
 # create plot
@@ -169,7 +171,7 @@ data.frame('values' = optimal_ranger$variable.importance,
 
 
 
-#### Model Testing ####
+#### Model Testing (NOT VALID) ####
 
 predictions <- stats::predict(optimal_ranger, data = places_test)
 summary(predictions$predictions - places_test$ls_price)
