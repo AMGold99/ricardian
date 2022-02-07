@@ -7,7 +7,7 @@ All code for Ricardian Land Value estimation paper. Authors: Gold, Binder, and N
 
 My general strategy here is to load, clean, and model the data all in one pipeline, using magrittr's pipe (%>%), which allows you to make fewer copies of your data as you go along. 
 
-First, we load the packages and specify where the data file (or files) reside. I want to keep this part vague for now, in case we want to utilize remote database storage. If so, [RSQLite](https://www.r-project.org/nosvn/pandoc/RSQLite.html) and associated packages like DBI should be considered.
+First, we load the packages and specify where the data file (or files) reside. I want to keep this part vague for now, in case we want to utilize remote database storage. If so, [RSQLite](https://www.r-project.org/nosvn/pandoc/RSQLite.html) and associated packages like DBI should be considered. I assume Google Drive won't be sufficient, but that's also worth a shot, as the [googledrive package](https://googledrive.tidyverse.org/) allows for seamless integration with Drive directories.
 
 Next, we specify the names of all the variables we want to include in our model, both the outcome **y** (ls_price) and the vector of explanatory variables **X**.
 
@@ -41,4 +41,16 @@ To fix this problem, I've moved to the [ranger package](https://arxiv.org/pdf/15
 
 ## Random Forest Model (Upgraded with Ranger)
 
-More detail to come.
+### General workflow
+
+1. Load packages and data;
+2. Clean the data (remove character variables, impute missing values, specify vector **X** of explanatory variables);
+3. Split data into test and train;
+4. Run preliminary ranger random forest model;
+5. Construct hypergrid of parameter options and run grid search;
+6. Run ranger random forest model using optimal parameters found in grid search;
+7. Build variable importance plot
+8. Test model (**is this necessary?**)
+
+
+

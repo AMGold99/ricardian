@@ -119,6 +119,7 @@ for(i in 1:nrow(hyper_grid)) {
   hyper_grid$OOB_RMSE[i] <- sqrt(model$prediction.error)
 }
 
+
 # View OOB errors added to hyper_grid to compare hyperparameter tunings
 
 hyper_grid <- hyper_grid %>%
