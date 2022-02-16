@@ -27,7 +27,7 @@ system.time(
     as.data.frame(.)
 )
 
-panel_model
+ols_model
 
 
 
