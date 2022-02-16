@@ -49,6 +49,3 @@ system.time(
     xtable::xtable(.)
     
 )
-
-
-
