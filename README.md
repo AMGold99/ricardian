@@ -7,7 +7,7 @@ All code for Ricardian Land Value estimation paper. Authors: Gold, Binder, and N
 
 My general strategy here is to load, clean, and model the data all in one pipeline, using magrittr's pipe (%>%), which allows you to make fewer copies of your data as you go along. 
 
-First, we load the packages and specify where the data file (or files) reside. I want to keep this part vague for now, in case we want to utilize remote database storage. If so, [RSQLite](https://www.r-project.org/nosvn/pandoc/RSQLite.html) and associated packages like DBI should be considered. I assume Google Drive won't be sufficient, but that's also worth a shot, as the [googledrive package](https://googledrive.tidyverse.org/) allows for seamless integration with Drive directories.
+First, we load the packages and specify where the data file (or files) reside. I want to keep this part vague for now, in case we want to utilize remote database storage. If so, [RSQLite](https://www.r-project.org/nosvn/pandoc/RSQLite.html), [Google BigQuery](https://bigrquery.r-dbi.org/), [Hadoop](https://www.projectpro.io/article/r-hadoop-a-perfect-match-for-big-data/292), and associated packages like DBI should be considered. I assume Google Drive won't be sufficient, but that's also worth a shot, as the [googledrive package](https://googledrive.tidyverse.org/) allows for seamless integration with Drive directories.
 
 Next, we specify the names of all the variables we want to include in our model, both the outcome **y** (ls_price) and the vector of explanatory variables **X**.
 
