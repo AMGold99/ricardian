@@ -173,7 +173,11 @@ data.frame('values' = optimal_ranger$variable.importance,
   
   ggplot2::theme_bw()
 
-ggplot2::ggsave('var_imp_plot.png', width = 7.5, height = 4, units = "in")
+ggplot2::ggsave('var_imp_plot.png', 
+                path = file.path(getwd(), "output"),
+                width = 7.5, 
+                height = 4, 
+                units = "in")
 
 
 #### Model Testing (NOT VALID) ####
