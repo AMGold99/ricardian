@@ -52,7 +52,7 @@ To fix this problem, I've moved to the [ranger package](https://arxiv.org/pdf/15
 7. Build variable importance plot (see example below)
 8. Test model (**is this necessary?**)
 
-![Fig. 1: Example Variable Importance Plot](var_imp_plot.png)
+![Fig. 1: Example Variable Importance Plot](output/var_imp_plot.png)
 
 
 
